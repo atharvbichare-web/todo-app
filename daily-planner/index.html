@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daily Planner</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+    <!-- Abstract nature background representing morning freshness -->
+    <div class="background-decorations">
+        <div class="blob leaf-blob-1"></div>
+        <div class="blob leaf-blob-2"></div>
+        <div class="blob sun-blob"></div>
+    </div>
+
+    <main class="app-container glass-panel">
+        <header class="app-header">
+            <div class="header-top">
+                <h1 class="app-title">My Daily Planner</h1>
+                <div class="header-actions">
+                    <div class="weather-widget" title="Current weather">
+                        <i class="fas fa-sun weather-icon"></i> <span class="weather-temp">24°C</span>
+                    </div>
+                    <button id="theme-toggle" class="icon-btn" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="datetime">
+                <h2 id="current-time">00:00 AM</h2>
+                <p id="current-date">Day, Month DD, YYYY</p>
+            </div>
+
+            <div class="motivation">
+                <p>Start your day fresh <span class="leaf-icon">🌿</span></p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-labels">
+                    <span>Today's Progress</span>
+                    <span id="progress-text">0/0 Completed</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-bar"></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="task-input-section">
+            <form id="task-form" class="task-input-wrapper">
+                <input type="text" id="task-input" placeholder="Add your task for today..." autocomplete="off">
+                <div class="category-wrapper">
+                    <select id="task-category">
+                        <option value="Personal">🌸 Personal</option>
+                        <option value="Work">💼 Work</option>
+                        <option value="Study">📚 Study</option>
+                        <option value="Health">🧘 Health</option>
+                    </select>
+                </div>
+                <button type="submit" id="add-btn" class="add-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </form>
+        </section>
+
+        <div class="content-grid">
+            <section class="tasks-section">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                
+                <div class="task-list" id="task-list">
+                    <!-- Tasks injected here -->
+                </div>
+            </section>
+
+            <aside class="routine-section">
+                <h3 class="section-title">Daily Routine</h3>
+                <div class="routine-list" id="routine-list">
+                    <!-- Routines injected here -->
+                </div>
+            </aside>
+        </div>
+
+        <footer class="app-footer">
+            <p>"Small steps every day lead to big results"</p>
+        </footer>
+    </main>
+
+    <!-- Audio effect for completion -->
+    <audio id="completion-sound" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

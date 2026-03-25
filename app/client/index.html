@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenery Productivity Tracker</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sunlight-glow"></div>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-content">
+        <h1>Fresh Starts 🌿</h1>
+        <p>Your calming productivity tracker</p>
+        <p id="daily-quote" class="quote-text">"Every morning starts a new page in your story."</p>
+      </div>
+      <div class="header-actions">
+        <div class="streak-badge">
+          🔥 <span id="streak-counter">0</span> Day Streak
+        </div>
+        <button id="theme-toggle" class="btn-icon">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Dashboard Section -->
+      <section class="dashboard card glass">
+        <h2>Dashboard</h2>
+        <div class="stats-container">
+          <div class="stat-box">
+            <h3>Today</h3>
+            <div class="progress-ring" id="today-progress">
+              <span class="progress-text">0%</span>
+            </div>
+            <p id="today-fraction">0 / 0 Tasks</p>
+          </div>
+          <div class="stat-box">
+            <h3>This Month</h3>
+            <div class="progress-ring" id="month-progress">
+              <span class="progress-text">0%</span>
+            </div>
+            <p id="month-fraction" class="expired-text">0% Expired</p>
+          </div>
+          <div class="stat-box">
+            <h3>This Year</h3>
+            <div class="progress-ring" id="year-progress">
+              <span class="progress-text">0%</span>
+            </div>
+            <p id="year-fraction" class="expired-text">0% Expired</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Adding tasks layout -->
+      <div class="main-layout">
+        <div class="left-panel">
+          <!-- Add Task Form -->
+          <section class="add-task-section card glass">
+            <h2>Add New Task</h2>
+            <form id="add-task-form">
+              <input type="text" id="task-title" placeholder="What needs to be done?" required>
+              <div class="form-row">
+                <select id="task-category" required>
+                  <option value="Work">Work</option>
+                  <option value="Study">Study</option>
+                  <option value="Health">Health</option>
+                  <option value="Personal">Personal</option>
+                </select>
+                <input type="date" id="task-date" required>
+              </div>
+              <div class="form-row">
+                <input type="time" id="task-deadline" title="Set a deadline for this task">
+                <button type="submit" class="btn-primary" style="flex: 2">Add Task 🍃</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Daily Routines -->
+          <section class="routine-section card glass">
+            <h2>Daily Routines</h2>
+            <ul id="routine-list" class="task-list">
+              <!-- Rendered via JS -->
+            </ul>
+          </section>
+        </div>
+
+        <div class="right-panel">
+          <!-- Task List -->
+          <section class="tasks-section card glass">
+            <div class="section-header">
+              <h2>My Tasks</h2>
+              <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+              </div>
+            </div>
+            <ul id="task-list" class="task-list">
+              <!-- Rendered via JS -->
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- Memory Gallery Section -->
+      <section class="gallery-section card glass" style="margin-top: 2rem;">
+        <h2>Memory Gallery 📸</h2>
+        <p class="subtext">A look back at your completed tasks.</p>
+        <div class="gallery-grid" id="memory-gallery">
+          <!-- Images rendered via JS -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Camera / Memory Modal -->
+  <div id="memory-modal" class="modal">
+    <div class="modal-content glass">
+      <h3>Capture a Memory 📸</h3>
+      <p>Task: <span id="modal-task-title"></span></p>
+      
+      <div class="camera-container">
+        <video id="camera-feed" autoplay playsinline style="display: none;"></video>
+        <canvas id="camera-canvas" style="display: none;"></canvas>
+        <img id="image-preview" src="" alt="Preview" style="display: none; max-width: 100%; border-radius: 12px; margin-top: 10px;">
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-start-camera" class="btn-secondary">Open Camera</button>
+        <button id="btn-capture" class="btn-primary" style="display: none;">Capture Photo</button>
+        
+        <label class="btn-secondary file-upload-btn">
+          Upload Image
+          <input type="file" id="file-upload" accept="image/*" style="display:none;">
+        </label>
+      </div>
+      
+      <div class="modal-footer">
+        <button id="btn-save-memory" class="btn-primary" style="display: none; width: 100%;">Save Memory 🌿</button>
+        <button id="btn-skip-memory" class="btn-text">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
