@@ -184,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTasks();
       updateTodayProgress();
       fetchAnalytics(); 
+    } else {
+      alert("Failed to add task. Please check your connection or try again.");
     }
   });
 

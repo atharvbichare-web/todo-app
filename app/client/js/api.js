@@ -24,9 +24,13 @@ const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
       });
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || `HTTP error! status: ${res.status}`);
+      }
       return await res.json();
     } catch (err) {
-      console.error(err);
+      console.error('Add task failed:', err);
       return null;
     }
   },
@@ -38,9 +42,12 @@ const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
       });
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
       return await res.json();
     } catch (err) {
-      console.error(err);
+      console.error('Update task failed:', err);
       return null;
     }
   },
