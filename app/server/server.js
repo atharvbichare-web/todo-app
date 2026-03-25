@@ -4,6 +4,13 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const path = require('path');
 const multer = require('multer');
+const fs = require('fs');
+
+// Create uploads directory if it doesn't exist
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 // ✅ Load env vars (FIXED)
 dotenv.config();

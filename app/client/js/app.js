@@ -406,7 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
     taskMemories.forEach(task => {
       const card = document.createElement('div');
       card.className = 'memory-card';
-      const url = `http://localhost:5000${task.image}`;
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      const baseUrl = isLocalhost ? 'http://localhost:5000' : '';
+      const url = `${baseUrl}${task.image}`;
       card.innerHTML = `
         <img src="${url}" alt="Memory for ${task.title}">
         <div class="memory-overlay">

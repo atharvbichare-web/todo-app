@@ -1,4 +1,5 @@
-const API_URL = "https://todo-app-2-xtwx.onrender.com/api";
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+const API_URL = isLocalhost ? "http://localhost:5000/api" : "/api";
 
 const api = {
   // Tasks
