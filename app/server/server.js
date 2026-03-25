@@ -51,7 +51,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 // ✅ FIX: Handle frontend routes (VERY IMPORTANT)
-app.get('/*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
